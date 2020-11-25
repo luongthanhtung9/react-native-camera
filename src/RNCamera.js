@@ -783,6 +783,10 @@ export default class Camera extends React.Component<PropsType, StateType> {
       recordAudioPermissionStatus,
     });
   }
+  
+  setPermissionCamera = (hasCameraPermissions) => {
+    this.props.setPermissionCamera(hasCameraPermissions)
+  }
 
   async componentDidMount() {
     const {
@@ -792,6 +796,8 @@ export default class Camera extends React.Component<PropsType, StateType> {
     if (this._isMounted === false) {
       return;
     }
+	
+	this.setPermissionCamera(hasCameraPermissions)
 
     this.setState(
       {
